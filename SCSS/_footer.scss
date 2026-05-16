@@ -1,0 +1,20 @@
+// FOOTER PRINCIPAL
+.footer {
+  background-color: $color-verde-musgo;
+  color: rgba($color-blanco, 0.75);
+  text-align: center;
+  padding: $spacing-sm $spacing-md;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  font-family: $font-body;
+  font-size: $font-size-xs;
+  letter-spacing: 0.05em;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+
+  &__text {
+    margin: 0;
+  }
+}

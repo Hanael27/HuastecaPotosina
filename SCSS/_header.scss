@@ -1,0 +1,66 @@
+// HEADER PRINCIPAL
+.header {
+  @include bg-overlay($color-verde-musgo, 0.6);
+  background-image: url('../IMG/HuastecaP.png');
+  background-size: cover;
+  background-position: center;
+  padding: $spacing-xxl $spacing-xl $spacing-xl;
+  text-align: center;
+  color: $color-blanco;
+
+  // ESCUDO
+  &__flag {
+    position: absolute;
+    top: 50%;
+    left: $spacing-lg;
+    transform: translateY(-50%);
+    width: 64px;
+    height: auto;
+    border-radius: $border-radius-sm;
+    box-shadow: $shadow-sm;
+  }
+
+  // TÍTULO PRINCIPAL
+  &__title {
+    font-family: $font-display;
+    font-size: $font-size-xxl;
+    letter-spacing: 0.06em;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    margin-bottom: $spacing-sm;
+
+    @include responsive(md) {
+      font-size: clamp(2rem, 5vw, 4rem);
+    }
+  }
+
+  // SUBTÍTULO
+  &__subtitle {
+    font-family: $font-body;
+    font-size: $font-size-md;
+    color: $color-turquesa-claro;
+    letter-spacing: 0.12em;
+    font-style: italic;
+  }
+}
+
+// AVE DECORATIVA ANIMADA
+.ave {
+  position: fixed;
+  bottom: 30px;
+  z-index: 1000;
+  width: 80px;
+  pointer-events: none; // No interfiere con clics del usuario
+  animation: volar 14s linear infinite;
+
+  &__imagen {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  }
+}
+
+// Animación de vuelo: entra por la derecha, sale por la izquierda
+@keyframes volar {
+  0%   { right: -100px; transform: scaleX(1); }
+  100% { right: calc(100vw + 100px); transform: scaleX(1); }
+}

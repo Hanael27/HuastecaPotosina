@@ -1,0 +1,477 @@
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* RESET */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+body {
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+table { border-collapse: collapse; width: 100%; }
+
+
+/* BODY / FONDO */
+body {
+  font-family: 'Lora', serif;
+  background-color: #f5f0e8;
+  color: #222222;
+  /* IMAGEN: Reemplaza los nombres de archivo con tus fotos de la Huasteca */
+  background-image:
+    url('../IMG/ImgHC.jpg'),   /* Foto central/principal */
+    url('../IMG/ImgHT.jpg'),      /* Foto decorativa superior */
+    url('../IMG/ImgHB.jpg');   /* Foto decorativa inferior */
+  background-position: center, top, bottom;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-attachment: fixed;
+  padding-bottom: 60px; /* Espacio para el footer fijo */
+}
+
+
+/* WELCOME OVERLAY */
+.welcome {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(26, 74, 26, 0.93);
+  z-index: 9999;
+  padding: 2rem;
+}
+.welcome__image {
+  width: 120px;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  border: 3px solid #00b4d8;
+}
+.welcome__text {
+  font-family: 'Lora', serif;
+  font-size: 1.125rem;
+  color: #fff;
+  text-align: center;
+  max-width: 480px;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  font-style: italic;
+}
+.welcome__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: #00b4d8;
+  color: #1a4a1a;
+  font-weight: 700;
+  transition: background 0.3s ease, transform 0.15s ease;
+  cursor: pointer;
+}
+.welcome__btn:hover {
+  background-color: #29c5e6;
+  transform: translateY(-2px);
+}
+
+
+/* HEADER */
+.header {
+  position: relative;
+  background-image: url('../IMG/HuastecaP.png');
+  background-size: cover;
+  background-position: center;
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  color: #fff;
+}
+/* Overlay oscuro sobre la imagen de fondo del header */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 74, 26, 0.60);
+  z-index: 0;
+}
+.header > * { position: relative; z-index: 1; }
+
+.header__flag {
+  position: absolute;
+  top: 50%;
+  left: 1.5rem;
+  transform: translateY(-50%);
+  width: 64px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+}
+.header__title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 12px rgba(0,0,0,.5);
+  margin-bottom: 0.5rem;
+}
+.header__subtitle {
+  font-family: 'Lora', serif;
+  font-size: 1.125rem;
+  color: #90e0ef;
+  letter-spacing: 0.12em;
+  font-style: italic;
+}
+
+
+/* AVE ANIMADA */
+.ave {
+  position: fixed;
+  bottom: 30px;
+  z-index: 1000;
+  width: 80px;
+  pointer-events: none;
+  animation: volar 14s linear infinite;
+}
+.ave__imagen {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+@keyframes volar {
+  0%   { right: -100px; }
+  100% { right: calc(100vw + 100px); }
+}
+
+
+/* NAV */
+.nav {
+  background-color: #1a4a1a;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+.nav__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+.nav__link {
+  display: block;
+  padding: 1rem 1.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  transition: background 0.3s ease, color 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+.nav__link:hover {
+  background-color: rgba(255,255,255,0.08);
+  color: #fff;
+}
+/* Sección activa en el nav */
+.nav__link.is-active {
+  color: #90e0ef;
+  border-bottom-color: #00b4d8;
+  background-color: rgba(0,180,216,0.10);
+}
+/* Enlace al Quest */
+.nav__link--quest {
+  color: #c97d2e;
+  font-weight: 700;
+}
+.nav__link--quest:hover { color: #dda060; }
+
+
+/* CONTENIDO PRINCIPAL */
+.main-content {
+  padding: 2rem 1rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+
+/* SECCIÓN GENÉRICA */
+.section {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.15);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  /* Oculto por defecto */
+  display: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+/* Estado visible: activado por jQuery al hacer clic en el nav */
+.section.is-active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #00b4d8;
+}
+.section__title {
+  font-family: 'Cinzel', serif;
+  font-size: 2rem;
+  color: #2d6a2d;
+  letter-spacing: 0.04em;
+}
+.section__icon {
+  font-size: 2rem;
+  color: #00b4d8;
+}
+.section__body {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  color: #222;
+  line-height: 1.8;
+}
+.section__body p { margin-bottom: 1rem; }
+.section__description {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.section__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 1.5rem;
+  color: #4a9e4a;
+  font-size: 0.875rem;
+  transition: color 0.15s ease;
+}
+.section__back:hover {
+  color: #2d6a2d;
+  text-decoration: underline;
+}
+
+
+/* GASTRONOMÍA */
+.food-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+@media (min-width: 576px) {
+  .food-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 992px) {
+  .food-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.food-card {
+  border: 1px solid #cef1f7;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.food-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,.2);
+}
+.food-card__image-wrap {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: #f5f0e8;
+}
+.food-card__image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.food-card:hover .food-card__image { transform: scale(1.06); }
+.food-card__body { padding: 1rem; }
+.food-card__name {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: #2d6a2d;
+  margin-bottom: 0.25rem;
+}
+.food-card__desc {
+  font-family: 'Lora', serif;
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+
+/* MÚSICA — TABLA */
+.music-table {
+  width: 100%;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+}
+.music-table__head th {
+  background-color: #2d6a2d;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  padding: 1rem 1.5rem;
+  text-align: left;
+}
+.music-table__row:nth-child(even) { background-color: #faf7f2; }
+.music-table__row:hover { background-color: rgba(144,224,239,0.2); }
+.music-table__row td {
+  padding: 1rem 1.5rem;
+  font-family: 'Lora', serif;
+  font-size: 0.875rem;
+  color: #222;
+  border-bottom: 1px solid rgba(144,224,239,0.3);
+}
+/* Botón de enlace a YouTube dentro de la tabla */
+.music-table__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 1rem;
+  border-radius: 50px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background-color: #2d6a2d;
+  color: #fff;
+  transition: background 0.3s ease, transform 0.15s ease;
+}
+.music-table__link:hover {
+  background-color: #4a9e4a;
+  transform: translateY(-2px);
+}
+.music-controls {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+
+/* BOTONES GENERALES */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.3s ease, transform 0.15s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,.15);
+}
+.btn--primary { background-color: #2d6a2d; color: #fff; }
+.btn--primary:hover { background-color: #4a9e4a; }
+.btn--danger  { background-color: #c97d2e; color: #fff; }
+.btn--danger:hover  { background-color: #b06820; }
+
+
+/* CULTURA */
+.culture-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+@media (min-width: 768px) {
+  .culture-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.culture-block {
+  padding: 1.5rem;
+  border-left: 4px solid #00b4d8;
+  background-color: rgba(245,240,232,0.6);
+  border-radius: 0 8px 8px 0;
+}
+.culture-block__title {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: #2d6a2d;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.culture-block__title i { color: #00b4d8; }
+.culture-block__text {
+  font-family: 'Lora', serif;
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+
+/* PLACEHOLDER DE IMAGEN */
+.img-placeholder {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(135deg, #f5f0e8, #d4f3fa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #555;
+  font-size: 0.875rem;
+  font-family: 'Lora', serif;
+  border: 2px dashed #90e0ef;
+  border-radius: 8px;
+}
+.img-placeholder i { font-size: 2rem; color: #90e0ef; }
+
+
+/* FOOTER */
+.footer {
+  background-color: #1a4a1a;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  font-family: 'Lora', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  box-shadow: 0 -2px 8px rgba(0,0,0,.2);
+}
+.footer__text { margin: 0; }

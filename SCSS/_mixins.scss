@@ -1,0 +1,101 @@
+// RESPONSIVE
+@mixin responsive($bp) {
+  @if $bp == sm {
+    @media (min-width: #{$bp-sm}) { @content; }
+  } @else if $bp == md {
+    @media (min-width: #{$bp-md}) { @content; }
+  } @else if $bp == lg {
+    @media (min-width: #{$bp-lg}) { @content; }
+  } @else if $bp == xl {
+    @media (min-width: #{$bp-xl}) { @content; }
+  }
+}
+
+// FLEX CENTER
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// FLEX BETWEEN
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// OVERLAY DE FONDO
+@mixin bg-overlay($color: #000, $opacity: 0.45) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0; // equivale a top/right/bottom/left: 0
+    background: rgba($color, $opacity);
+    z-index: 0;
+  }
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// TARJETA
+@mixin card {
+  background: $color-blanco;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-md;
+  padding: $spacing-xl;
+}
+
+// BOTÓN BASE
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-pill;
+  font-family: $font-display;
+  font-size: $font-size-sm;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background $transition-normal, color $transition-normal,
+              transform $transition-fast, box-shadow $transition-normal;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// TRUNCAR TEXTO
+@mixin text-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// ASPECTO DE IMAGEN
+@mixin aspect-ratio($w, $h) {
+  aspect-ratio: #{$w} / #{$h};
+  object-fit: cover;
+  width: 100%;
+}
+
+// SECCIÓN OCULTA / VISIBLE
+@mixin section-toggle {
+  display: none;          // Oculto por defecto
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity $transition-normal, transform $transition-normal;
+
+  &.is-active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

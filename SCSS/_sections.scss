@@ -1,0 +1,253 @@
+// CONTENEDOR PRINCIPAL
+.main-content {
+  padding: $spacing-xl $spacing-md $spacing-xxl;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+// BLOQUE: SECCIÓN GENÉRICA
+// Cada sección (Historia, Gastronomía, Música, Cultura) usa este bloque base. jQuery añade/quita .is-active para mostrarla.
+.section {
+  @include card;
+  margin-bottom: $spacing-xl;
+  // Oculto por defecto; visible solo cuando jQuery activa .is-active
+  @include section-toggle;
+
+  // Cabecera de la sección con línea decorativa
+  &__header {
+    @include flex-between;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-md;
+    border-bottom: 2px solid $color-turquesa;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $font-size-xl;
+    color: $color-verde-selva;
+    letter-spacing: 0.04em;
+  }
+
+  // Ícono decorativo junto al título (Font Awesome)
+  &__icon {
+    font-size: $font-size-xl;
+    color: $color-turquesa;
+  }
+
+  &__body {
+    font-family: $font-body;
+    font-size: $font-size-base;
+    color: $color-texto;
+    line-height: 1.8;
+  }
+
+  // Enlace "volver al inicio" al pie de cada sección
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    margin-top: $spacing-lg;
+    color: $color-verde-claro;
+    font-size: $font-size-sm;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-verde-selva;
+      text-decoration: underline;
+    }
+  }
+}
+
+// BLOQUE: SECCIÓN HISTORIA
+// Texto largo con imagen de fondo decorativa.
+.section--historia {
+  .section__body p {
+    margin-bottom: $spacing-md;
+  }
+}
+
+// BLOQUE: GASTRONOMÍA — Tarjetas de platillos
+// Cada platillo se muestra en una tarjeta con imagen y descripción.
+.food-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+  margin-top: $spacing-lg;
+
+  @include responsive(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include responsive(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.food-card {
+  border: 1px solid lighten($color-turquesa-claro, 10%);
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  transition: transform $transition-normal, box-shadow $transition-normal;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+
+  // Contenedor de la imagen con proporción fija
+  &__image-wrap {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: $color-crema; // Placeholder hasta que se agregue imagen
+  }
+
+  &__image {
+    @include aspect-ratio(4, 3);
+    height: 180px;
+    object-fit: cover;
+    transition: transform $transition-slow;
+
+    .food-card:hover & {
+      transform: scale(1.06);
+    }
+  }
+
+  &__body {
+    padding: $spacing-md;
+  }
+
+  &__name {
+    font-family: $font-display;
+    font-size: $font-size-base;
+    color: $color-verde-selva;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__desc {
+    font-family: $font-body;
+    font-size: $font-size-sm;
+    color: $color-texto-suave;
+    line-height: 1.6;
+  }
+}
+
+// BLOQUE: MÚSICA — Tabla de canciones con enlaces a YouTube
+.music-table {
+  width: 100%;
+  margin-top: $spacing-lg;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+
+  &__head {
+    th {
+      background-color: $color-verde-selva;
+      color: $color-blanco;
+      font-family: $font-display;
+      font-size: $font-size-sm;
+      letter-spacing: 0.08em;
+      padding: $spacing-md $spacing-lg;
+      text-align: left;
+    }
+  }
+
+  &__row {
+    transition: background $transition-fast;
+
+    &:nth-child(even) {
+      background-color: lighten($color-crema, 2%);
+    }
+
+    &:hover {
+      background-color: rgba($color-turquesa-claro, 0.2);
+    }
+
+    td {
+      padding: $spacing-md $spacing-lg;
+      font-family: $font-body;
+      font-size: $font-size-sm;
+      color: $color-texto;
+      border-bottom: 1px solid rgba($color-turquesa-claro, 0.3);
+    }
+  }
+
+  // Enlace a YouTube dentro de cada celda
+  &__link {
+    @include btn-base;
+    background-color: $color-verde-selva;
+    color: $color-blanco;
+    font-size: $font-size-xs;
+    padding: $spacing-xs $spacing-md;
+
+    &:hover {
+      background-color: $color-verde-claro;
+    }
+
+    i { font-size: 1rem; }
+  }
+}
+
+// Botones de control de reproducción
+.music-controls {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
+  flex-wrap: wrap;
+}
+
+.btn {
+  @include btn-base;
+
+  // Variante primaria (verde)
+  &--primary {
+    background-color: $color-verde-selva;
+    color: $color-blanco;
+    &:hover { background-color: $color-verde-claro; }
+  }
+
+  // Variante de peligro / detener (ocre)
+  &--danger {
+    background-color: $color-ocre;
+    color: $color-blanco;
+    &:hover { background-color: darken($color-ocre, 8%); }
+  }
+}
+
+// BLOQUE: CULTURA — Bloques temáticos
+.culture-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+  margin-top: $spacing-lg;
+
+  @include responsive(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.culture-block {
+  padding: $spacing-lg;
+  border-left: 4px solid $color-turquesa;
+  background-color: rgba($color-crema, 0.6);
+  border-radius: 0 $border-radius-md $border-radius-md 0;
+
+  &__title {
+    font-family: $font-display;
+    font-size: $font-size-base;
+    color: $color-verde-selva;
+    margin-bottom: $spacing-sm;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    i { color: $color-turquesa; }
+  }
+
+  &__text {
+    font-family: $font-body;
+    font-size: $font-size-sm;
+    color: $color-texto-suave;
+    line-height: 1.7;
+  }
+}

@@ -1,0 +1,85 @@
+@use 'reset';
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'header';
+@use 'nav';
+@use 'sections';
+@use 'footer';
+
+// ESTILOS GLOBALES DE BODY Y FONDO
+body {
+  font-family: $font-body;
+  background-color: $color-crema;
+  color: $color-texto;
+  // Fondo con superposición de imágenes de la región
+  background-image:
+    url('../IMG/ImgHC.jpg'),   // IMAGEN: foto central/principal de fondo
+    url('../IMG/ImgHT.jpg'),      // IMAGEN: foto decorativa superior
+    url('../IMG/ImgHB.jpg');   // IMAGEN: foto decorativa inferior
+  background-position: center, top, bottom;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-attachment: fixed;
+  padding-bottom: 60px;
+}
+
+// MENSAJE DE BIENVENIDA
+// Se muestra al cargar la página y se cierra con jQuery.
+.welcome {
+  position: fixed;
+  inset: 0;
+  @include flex-center;
+  flex-direction: column;
+  background: rgba($color-verde-musgo, 0.92);
+  z-index: 9999;
+  padding: $spacing-xl;
+
+  &__image {
+    width: 120px;
+    margin-bottom: $spacing-lg;
+    border-radius: 50%;
+    border: 3px solid $color-turquesa;
+  }
+
+  &__text {
+    font-family: $font-body;
+    font-size: $font-size-md;
+    color: $color-blanco;
+    text-align: center;
+    max-width: 480px;
+    margin-bottom: $spacing-xl;
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  &__btn {
+    @include btn-base;
+    background-color: $color-turquesa;
+    color: $color-verde-musgo;
+    font-weight: 700;
+
+    &:hover {
+      background-color: lighten($color-turquesa, 10%);
+    }
+  }
+}
+
+// PLACEHOLDER DE IMAGEN
+// Se muestra cuando una imagen aún no ha sido asignada.
+.img-placeholder {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(135deg, $color-crema, lighten($color-turquesa-claro, 20%));
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-sm;
+  color: $color-texto-suave;
+  font-size: $font-size-sm;
+  font-family: $font-body;
+  border: 2px dashed $color-turquesa-claro;
+  border-radius: $border-radius-md;
+
+  i {
+    font-size: $font-size-xl;
+    color: $color-turquesa-claro;
+  }
+}

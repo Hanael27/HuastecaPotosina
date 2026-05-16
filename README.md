@@ -1,0 +1,2 @@
+Huasteca Potosina - Portal Turístico (Borrador)  
+Este proyecto es un prototipo de sitio web diseñado como una guía preliminar para turistas. El objetivo es ofrecer una interfaz limpia y atractiva que destaque la riqueza natural, las rutas accesibles y la cultura de la región de la Huasteca Potosina.

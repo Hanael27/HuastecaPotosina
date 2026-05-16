@@ -1,0 +1,53 @@
+.nav {
+  background-color: $color-verde-musgo;
+  position: sticky;    // Se queda fija al hacer scroll
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+
+  &__list {
+    @include flex-center;
+    flex-wrap: wrap;     // En móvil los ítems saltan de línea
+    gap: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    // Sin estilos propios; los porta el link
+  }
+
+  &__link {
+    display: block;
+    padding: $spacing-md $spacing-lg;
+    font-family: $font-display;
+    font-size: $font-size-sm;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba($color-blanco, 0.8);
+    transition: background $transition-normal, color $transition-normal;
+    border-bottom: 3px solid transparent;
+
+    &:hover {
+      background-color: rgba($color-blanco, 0.08);
+      color: $color-blanco;
+    }
+
+    // Estado activo: sección actualmente desplegada
+    &.is-active {
+      color: $color-turquesa-claro;
+      border-bottom-color: $color-turquesa;
+      background-color: rgba($color-turquesa, 0.1);
+    }
+
+    // El enlace al Quest abre en nueva pestaña; estilo diferenciado
+    &--quest {
+      color: $color-ocre;
+      font-weight: 700;
+
+      &:hover {
+        color: lighten($color-ocre, 15%);
+      }
+    }
+  }
+}

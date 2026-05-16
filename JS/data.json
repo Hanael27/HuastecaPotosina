@@ -1,0 +1,218 @@
+{
+  "sitio": {
+    "titulo": "Huasteca Potosina",
+    "subtitulo": "Maravilla natural del corazón de México",
+    "descripcionBreve": "Región mágica de selvas, ríos turquesa y cultura milenaria al noreste de San Luis Potosí."
+  },
+
+  "historia": {
+    "parrafos": [
+      "La Huasteca Potosina es una región ubicada al noreste del estado de San Luis Potosí, México. Su nombre proviene del pueblo indígena huasteco (o teenek), uno de los grupos más antiguos de Mesoamérica, cuya presencia en la región data de más de tres mil años. Los teenek desarrollaron una cultura rica en cerámica, escultura y arquitectura, con importantes centros ceremoniales como Tamtoc, considerado uno de los sitios arqueológicos más relevantes de la región.",
+      "Durante la época prehispánica, la Huasteca fue un territorio de gran vitalidad cultural y comercial. Los huastecos mantuvieron contacto con otros grupos mesoamericanos como los toltecas y aztecas, aunque preservaron siempre rasgos culturales propios. La región fue conquistada por los mexicas en el siglo XV, pero la resistencia huasteca fue legendaria.",
+      "Con la llegada de los españoles en el siglo XVI, la Huasteca fue evangelizada y colonizada, fusionando sus tradiciones indígenas con influencias europeas y africanas. Esta mezcla cultural dio origen a las expresiones artísticas, musicales y gastronómicas que hoy caracterizan a la región.",
+      "Hoy, la Huasteca Potosina es reconocida mundialmente por su biodiversidad, sus ríos de aguas cristalinas turquesa, sus cascadas impresionantes y la calidez de su gente. Municipios como Aquismón, Tamasopo, Xilitla, Ciudad Valles y Tamazunchale son destinos turísticos de primer nivel que atraen visitantes de todo el mundo."
+    ]
+  },
+
+  "gastronomia": {
+    "platillos": [
+      {
+        "id": "zacahuil",
+        "nombre": "Zacahuil",
+        "descripcion": "El tamal gigante de la Huasteca. Masa de maíz gruesa rellena de carne de cerdo o pollo con chile, envuelta en hojas de plátano y cocinada en horno de leña. Puede medir hasta tres metros.",
+        "imagen": "IMG/Comida/Zacahuil.jpg"
+      },
+      {
+        "id": "bocoles",
+        "nombre": "Bocoles",
+        "descripcion": "Tortillas gruesas y esponjosas de masa de maíz mezclada con frijoles negros. Se sirven rellenas de queso, frijoles o chicharrón. Desayuno típico de la región.",
+        "imagen": "IMG/Comida/Bocoles.jpg"
+      },
+      {
+        "id": "enchiladas-huastecas",
+        "nombre": "Enchiladas Huastecas",
+        "descripcion": "Tortillas bañadas en salsa de chile ancho y tomate, rellenas de queso o pollo. Se adornan con cebolla, crema y cilantro. Sabor profundo y color intenso.",
+        "imagen": "IMG/Comida/Enchiladas.png"
+      },
+      {
+        "id": "pemoles",
+        "nombre": "Pemoles",
+        "descripcion": "Galletas tradicionales teenek elaboradas con masa de maíz, piloncillo y especias. Se hornean en comal y tienen un sabor dulce y ahumado. Ideales como postre o colación.",
+        "imagen": "IMG/Comida/Pemoles.jpg"
+      },
+      {
+        "id": "caldo-xochitl",
+        "nombre": "Caldo Xóchitl",
+        "descripcion": "Caldo de pollo con arroz, garbanzos, chile serrano y aguacate. Su nombre en náhuatl significa 'flor'. Caldo reconfortante y aromático de la cocina mestiza huasteca.",
+        "imagen": "IMG/Comida/CaldoXo.png"
+      },
+      {
+        "id": "tesmole",
+        "nombre": "Tesmole",
+        "descripcion": "Guiso de carne de cerdo o pollo en salsa de chile verde con masa de maíz como espesante. Preparación ancestral teenek servida en festividades y ceremonias.",
+        "imagen": "IMG/Comida/Tesmole.jpg"
+      },
+      {
+        "id": "morongas",
+        "nombre": "Morongas",
+        "descripcion": "Embutido regional elaborado con sangre de cerdo, hierbas aromáticas, chile y especias, cocido dentro de tripa natural. Platillo de herencia mestiza muy popular en mercados locales.",
+        "imagen": "IMG/Comida/Moronga.jpg"
+      }
+    ]
+  },
+
+  "musica": {
+    "descripcion": "La Huasteca Potosina es uno de los corazones más vibrantes del Son Huasteco, una de las tradiciones musicales más ricas e identitarias de México. El huapango, caracterizado por su espectacular falsete y el virtuosismo del violín, la jarana y la quinta huapanguera, es el alma viva de la región.",
+    "canciones": [
+      {
+        "id": "cancion-1",
+        "titulo": "La Llorona",
+        "artista": "Los Tres Huastecos",
+        "youtube": "https://www.youtube.com/watch?v=Tcg9Pq69Zdk"
+      },
+      {
+        "id": "cancion-2",
+        "titulo": "El Cielito Lindo Huasteco",
+        "artista": "Elpidio Ramírez y el trío los jinetes",
+        "youtube": "https://www.youtube.com/watch?v=XLq65Slyu2s"
+      },
+      {
+        "id": "cancion-3",
+        "titulo": "La Malagueña",
+        "artista": "Miguel Aceves Mejía",
+        "youtube": "https://www.youtube.com/watch?v=nKw1R9qAENQ"
+      },
+      {
+        "id": "cancion-4",
+        "titulo": "El Querreque",
+        "artista": "Trio Armonia Huasteca",
+        "youtube": "https://www.youtube.com/watch?v=XwUrkmYb1hI"
+      },
+      {
+        "id": "cancion-5",
+        "titulo": "La Huazanga",
+        "artista": "Huapangueros Diferentes",
+        "youtube": "https://www.youtube.com/watch?v=bPjmz_bkqzg"
+      },
+      {
+        "id": "cancion-6",
+        "titulo": "El Fandanguito",
+        "artista": "Trío Cantores Del Alba",
+        "youtube": "https://www.youtube.com/watch?v=3tlwIAerxlM"
+      },
+      {
+        "id": "cancion-7",
+        "titulo": "El Son de la Muerte",
+        "artista": "Trio Lucero Huasteco",
+        "youtube": "https://www.youtube.com/watch?v=HxEuWliSWZ4"
+      }
+    ]
+  },
+
+  "cultura": {
+    "bloques": [
+      {
+        "id": "pueblo-teenek",
+        "icono": "fa-person",
+        "titulo": "Pueblo Teenek",
+        "texto": "Los teenek (huastecos) son el pueblo originario de la región. Su lengua, tradiciones y cosmovisión siguen vivos a través de la danza, la artesanía textil y las ceremonias agrícolas como el Xantolo, la celebración de Día de Muertos más espectacular del país."
+      },
+      {
+        "id": "artesanias",
+        "icono": "fa-hands",
+        "titulo": "Artesanías",
+        "texto": "El bordado teenek en punto de cruz, con diseños geométricos en colores vibrantes, es reconocido a nivel internacional. También destacan las esculturas en madera, la alfarería y los instrumentos musicales como la jarana huasteca y el violín artesanal."
+      },
+      {
+        "id": "danza",
+        "icono": "fa-music",
+        "titulo": "Danza y Huapango",
+        "texto": "El Xantolo es el corazón espiritual de la Huasteca. En esta celebración, las calles se llenan con las comparsas de huehues (o 'viejos'), danzantes que visten máscaras artesanales de madera y disfraces coloridos para personificar a las almas que regresan y burlar a la muerte. Acompañados por sones de costumbre y huapangos, los huehues bailan en cuadrillas, creando un puente entre el mundo de los vivos y los ancestros en una de las tradiciones más auténticas de México."
+      },
+      {
+        "id": "naturaleza",
+        "icono": "fa-water",
+        "titulo": "Naturaleza y Ecoturismo",
+        "texto": "La región alberga las Cascadas de Tamul (las más grandes de San Luis Potosí), la Sótano de las Golondrinas (uno de los abismos más profundos del mundo), el Río Tampaón de aguas turquesa y la Zona Arqueológica de Tamtoc, todo en un entorno de selva tropical exuberante."
+      },
+      {
+        "id": "gastronomia-cultura",
+        "icono": "fa-utensils",
+        "titulo": "Gastronomía como Identidad",
+        "texto": "La cocina huasteca es expresión de identidad cultural. El zacahuil se prepara en celebraciones comunitarias; los bocoles son el desayuno que une familias. Los mercados de Ciudad Valles y Tamazunchale son patrimonio vivo donde los sabores prehispánicos conviven con la tradición mestiza."
+      },
+      {
+        "id": "xantolo",
+        "icono": "fa-skull",
+        "titulo": "Xantolo: Día de Muertos Huasteco",
+        "texto": "El Xantolo es la celebración de Día de Muertos más auténtica y colorida de México. Durante días, las comunidades teenek reciben a sus difuntos con altares, comparsas de danzantes enmascarados y música de huapango. Es una experiencia espiritual y festiva única en el mundo."
+      }
+    ]
+  },
+
+  "quest": {
+    "guia": {
+      "nombre": "Xochitl",
+      "descripcion": "¡Bienvenido a la Huasteca Potosina! Soy Xochitl, una cotorro de corona roja y seré tu guía en este recorrido. Haz clic en cada punto del mapa para descubrir los tesoros de nuestra región.",
+      "imagen": "IMG/Guia.png"
+    },
+    "lugares": [
+      {
+        "id": "xilitla",
+        "nombre": "Xilitla",
+        "top": "85%",
+        "left": "60%",
+        "info": "Xilitla es famosa por Las Pozas, el jardín surrealista del excéntrico mecenas inglés Edward James, construido entre la selva tropical. Sus esculturas de concreto entrelazadas con la vegetación son una obra de arte única en el mundo.",
+        "imagen": "IMG/Tour/Xilitla.jpg"
+      },
+      {
+        "id": "tamasopo",
+        "nombre": "Tamasopo",
+        "top": "48%",
+        "left": "50%",
+        "info": "Las Cascadas de Tamasopo son un conjunto de cascadas y pozas de agua turquesa cristalina, ideales para nadar y hacer rappel. El pueblo de Tamasopo conserva tradiciones gastronómicas y artesanales únicas de la sierra potosina.",
+        "imagen": "IMG/Tour/Tamasopo.jpg"
+      },
+      {
+        "id": "ciudad-valles",
+        "nombre": "Ciudad Valles",
+        "top": "42%",
+        "left": "68%",
+        "info": "Ciudad Valles es la capital turística de la Huasteca Potosina. Punto de partida ideal para explorar la región, con acceso al Río Valles, el Puente de Dios y los mejores mercados gastronómicos donde probar el zacahuil y los bocoles.",
+        "imagen": "IMG/Tour/CdValles.jpg"
+      },
+      {
+        "id": "aquismon",
+        "nombre": "Aquismón",
+        "top": "52%",
+        "left": "59%",
+        "info": "Aquismón alberga la Cascada de Tamul, la más grande de San Luis Potosí con 105 metros de caída libre, y la impresionante Sótano de las Golondrinas, un abismo de 376 metros de profundidad donde millones de vencejos y loros anidan.",
+        "imagen": "IMG/Tour/Aquismon.jpg"
+      },
+      {
+        "id": "tamazunchale",
+        "nombre": "Tamazunchale",
+        "top": "92%",
+        "left": "81%",
+        "info": "Tamazunchale es el corazón cultural del pueblo teenek. Sede del Festival de Huapango más importante de México, conserva tradiciones ancestrales como el bordado teenek en punto de cruz y la celebración del Xantolo.",
+        "imagen": "IMG/Tour/Tamazunchale.jpg"
+      },
+      {
+        "id": "tamtoc",
+        "nombre": "Zona Arqueológica Tamtoc",
+        "top": "46%",
+        "left": "81%",
+        "info": "Tamtoc fue uno de los centros ceremoniales más importantes del pueblo teenek. Sus estructuras piramidales, esculturas monumentales y sistemas hidráulicos revelan la sofisticación de la civilización huasteca prehispánica.",
+        "imagen": "IMG/Tour/Tamtoc.jpg"
+      },
+      {
+        "id": "puente-de-dios",
+        "nombre": "Puente de Dios",
+        "top": "44%",
+        "left": "45%",
+        "info": "El Puente de Dios es una formación natural de roca caliza bajo la cual corre un río de aguas turquesa. El resultado es una cueva-puente con albercas naturales de colores únicos, uno de los paisajes más fotografiados de la Huasteca.",
+        "imagen": "IMG/Tour/PdDios.jpg"
+      }
+    ]
+  }
+}
