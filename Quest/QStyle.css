@@ -199,3 +199,28 @@ body {
   z-index: 150;
 }
 .overlay.hidden { display: none; }
+
+@media (max-width: 575px) {
+  body {
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+  .map-container {
+    width: 100%;
+    overflow: hidden; /* evita que los botones rompan el layout */
+  }
+  /* En móvil el mapa hace scroll horizontal en lugar de
+     encoger tanto que los botones se amontonen */
+  .map-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .map-container__image {
+    min-width: 600px;
+    width: 600px;
+  }
+  .location-btn {
+    font-size: 0.6rem;
+    padding: 5px 8px;
+  }
+}

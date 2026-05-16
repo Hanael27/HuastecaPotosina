@@ -21,7 +21,6 @@ ul, ol { list-style: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 table { border-collapse: collapse; width: 100%; }
 
-
 /* BODY / FONDO */
 body {
   font-family: 'Lora', serif;
@@ -29,15 +28,13 @@ body {
   color: #222222;
   /* IMAGEN: Reemplaza los nombres de archivo con tus fotos de la Huasteca */
   background-image:
-    url('../IMG/ImgHC.jpg'),   /* Foto central/principal */
-    url('../IMG/ImgHT.jpg'),      /* Foto decorativa superior */
-    url('../IMG/ImgHB.jpg');   /* Foto decorativa inferior */
-  background-position: center, top, bottom;
-  background-repeat: no-repeat, no-repeat, no-repeat;
+    url('../IMG/ImgHC.jpg');   /* Foto principal */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   padding-bottom: 60px; /* Espacio para el footer fijo */
 }
-
 
 /* WELCOME OVERLAY */
 .welcome {
@@ -88,7 +85,6 @@ body {
   transform: translateY(-2px);
 }
 
-
 /* HEADER */
 .header {
   position: relative;
@@ -134,7 +130,6 @@ body {
   font-style: italic;
 }
 
-
 /* AVE ANIMADA */
 .ave {
   position: fixed;
@@ -154,7 +149,6 @@ body {
   100% { right: calc(100vw + 100px); }
 }
 
-
 /* NAV */
 .nav {
   background-color: #1a4a1a;
@@ -170,6 +164,7 @@ body {
   flex-wrap: wrap;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 .nav__link {
   display: block;
@@ -199,14 +194,12 @@ body {
 }
 .nav__link--quest:hover { color: #dda060; }
 
-
 /* CONTENIDO PRINCIPAL */
 .main-content {
   padding: 2rem 1rem 3rem;
   max-width: 1100px;
   margin: 0 auto;
 }
-
 
 /* SECCIÓN GENÉRICA */
 .section {
@@ -274,7 +267,6 @@ body {
   text-decoration: underline;
 }
 
-
 /* GASTRONOMÍA */
 .food-grid {
   display: grid;
@@ -325,7 +317,6 @@ body {
   color: #555;
   line-height: 1.6;
 }
-
 
 /* MÚSICA — TABLA */
 .music-table {
@@ -379,7 +370,6 @@ body {
   flex-wrap: wrap;
 }
 
-
 /* BOTONES GENERALES */
 .btn {
   display: inline-flex;
@@ -402,7 +392,6 @@ body {
 .btn--primary:hover { background-color: #4a9e4a; }
 .btn--danger  { background-color: #c97d2e; color: #fff; }
 .btn--danger:hover  { background-color: #b06820; }
-
 
 /* CULTURA */
 .culture-grid {
@@ -438,7 +427,6 @@ body {
   line-height: 1.7;
 }
 
-
 /* PLACEHOLDER DE IMAGEN */
 .img-placeholder {
   width: 100%;
@@ -457,7 +445,6 @@ body {
 }
 .img-placeholder i { font-size: 2rem; color: #90e0ef; }
 
-
 /* FOOTER */
 .footer {
   background-color: #1a4a1a;
@@ -475,3 +462,51 @@ body {
   box-shadow: 0 -2px 8px rgba(0,0,0,.2);
 }
 .footer__text { margin: 0; }
+
+/* RESPONSIVE MÓVIL VERTICAL */
+@media (max-width: 575px) {
+
+  /* NAV: columna única centrada */
+  .nav__list {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .nav__link {
+    text-align: center;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-left: 3px solid transparent;
+    border-right: none; /* evita doble borde */
+  }
+  .nav__link.is-active {
+    border-left-color: #00b4d8;
+    border-bottom-color: rgba(255,255,255,0.08);
+  }
+
+  /* HEADER: escudo más pequeño y sin invadir el título */
+  .header {
+    padding: 1.5rem 1rem 1rem;
+  }
+  .header__flag {
+    position: static;       /* sale del flujo absoluto */
+    transform: none;
+    width: 48px;
+    margin: 0 auto 0.75rem; /* centrado encima del título */
+    display: block;
+  }
+  .header__title {
+    font-size: 2rem;
+  }
+  .header__subtitle {
+    font-size: 0.95rem;
+  }
+
+  /* MÚSICA: scroll horizontal en la tabla */
+  #section-musica .section__body {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .music-table {
+    min-width: 500px;
+  }
+}

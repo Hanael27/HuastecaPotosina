@@ -66,7 +66,6 @@ $(document).ready(function () {
       $('#popup-info').text(info);
 
       // Mostrar imagen del lugar en el popup
-      // IMAGEN: La ruta viene de data.json → quest.lugares[n].imagen
       $('#popup-imagen')
         .attr('src', imagen)
         .attr('alt', nombre)

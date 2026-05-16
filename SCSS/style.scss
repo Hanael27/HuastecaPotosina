@@ -13,11 +13,10 @@ body {
   color: $color-texto;
   // Fondo con superposición de imágenes de la región
   background-image:
-    url('../IMG/ImgHC.jpg'),   // IMAGEN: foto central/principal de fondo
-    url('../IMG/ImgHT.jpg'),      // IMAGEN: foto decorativa superior
-    url('../IMG/ImgHB.jpg');   // IMAGEN: foto decorativa inferior
-  background-position: center, top, bottom;
-  background-repeat: no-repeat, no-repeat, no-repeat;
+    url('../IMG/ImgHC.jpg');   // IMAGEN: foto central/principal de fondo
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   padding-bottom: 60px;
 }
