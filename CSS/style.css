@@ -463,50 +463,90 @@ body {
 }
 .footer__text { margin: 0; }
 
-/* RESPONSIVE MÓVIL VERTICAL */
+/* ============================================================
+   RESPONSIVE MÓVIL VERTICAL — max-width: 575px
+   ============================================================ */
 @media (max-width: 575px) {
 
-  /* NAV: columna única centrada */
+  /* --- NAV: columna única, cada ítem ocupa todo el ancho --- */
   .nav__list {
     flex-direction: column;
     align-items: stretch;
+    width: 100%;
+  }
+  .nav__item {
+    width: 100%;
   }
   .nav__link {
     text-align: center;
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    border-left: 3px solid transparent;
-    border-right: none; /* evita doble borde */
+    padding: 0.85rem 1rem;
+    /* Quitamos border-bottom de 3px (el del estado base desktop)
+       y lo reemplazamos por border-left para indicar activo */
+    border-bottom: 1px solid rgba(255,255,255,0.10) !important;
+    border-left: 4px solid transparent;
   }
   .nav__link.is-active {
-    border-left-color: #00b4d8;
-    border-bottom-color: rgba(255,255,255,0.08);
+    border-left-color: #00b4d8 !important;
+    border-bottom-color: rgba(255,255,255,0.10) !important;
+    background-color: rgba(0,180,216,0.12);
   }
 
-  /* HEADER: escudo más pequeño y sin invadir el título */
+  /* --- HEADER: saca el escudo del flujo absoluto
+         para que no tape el título en pantallas estrechas --- */
   .header {
-    padding: 1.5rem 1rem 1rem;
+    padding: 1.25rem 1rem 1rem;
+    /* Cambiamos a flex para apilar escudo → título → subtítulo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .header__flag {
-    position: static;       /* sale del flujo absoluto */
+    position: static;        /* ya no es absoluto */
     transform: none;
-    width: 48px;
-    margin: 0 auto 0.75rem; /* centrado encima del título */
-    display: block;
+    width: 52px;
+    margin-bottom: 0.75rem;
+    order: -1;               /* asegura que aparezca primero */
   }
   .header__title {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    order: 0;
   }
   .header__subtitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    order: 1;
   }
 
-  /* MÚSICA: scroll horizontal en la tabla */
+  /* --- SECCIONES: menos padding en móvil --- */
+  .section {
+    padding: 1.25rem;
+  }
+  .section__title {
+    font-size: 1.4rem;
+  }
+
+  /* --- MÚSICA: wrapper con scroll horizontal
+         La tabla mantiene su ancho mínimo y el usuario
+         desliza en lugar de ver texto comprimido          --- */
   #section-musica .section__body {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    /* Sombra sutil en el borde derecho para indicar scroll */
+    background:
+      linear-gradient(to right, white 30%, rgba(255,255,255,0)),
+      linear-gradient(to right, rgba(255,255,255,0), white 70%) 0 100%,
+      linear-gradient(to right, rgba(0,180,216,0.15), rgba(255,255,255,0)),
+      linear-gradient(to left,  rgba(0,180,216,0.15), rgba(255,255,255,0));
+    background-repeat: no-repeat;
+    background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+    background-position: left, right, left, right;
+    background-attachment: local, local, scroll, scroll;
   }
   .music-table {
-    min-width: 500px;
+    min-width: 480px;
+  }
+  /* Celdas con menos padding para que quepan mejor */
+  .music-table__head th,
+  .music-table__row td {
+    padding: 0.75rem 0.75rem;
   }
 }

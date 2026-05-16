@@ -200,27 +200,60 @@ body {
 }
 .overlay.hidden { display: none; }
 
+/* ============================================================
+   QUEST — RESPONSIVE MÓVIL VERTICAL — max-width: 575px
+
+   Problema original: overflow:hidden y overflow-x:auto
+   en el mismo elemento se cancelan entre sí. La solución
+   es envolver el mapa en un div que haga el scroll, y dejar
+   que .map-container mantenga su posición relativa intacta.
+   ============================================================ */
 @media (max-width: 575px) {
   body {
     align-items: flex-start;
+    justify-content: flex-start;
     padding: 0.5rem;
   }
-  .map-container {
+
+  /* El wrapper externo es quien hace scroll horizontal.
+     .map-container sigue siendo position:relative para
+     que los botones top/left funcionen correctamente.    */
+  .map-scroll-wrapper {
     width: 100%;
-    overflow: hidden; /* evita que los botones rompan el layout */
-  }
-  /* En móvil el mapa hace scroll horizontal en lugar de
-     encoger tanto que los botones se amontonen */
-  .map-container {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    /* Indicador visual de scroll */
+    border-radius: 8px;
+    box-shadow: inset -8px 0 12px -8px rgba(0,180,216,0.3);
   }
+
+  .map-container {
+    width: 620px;      /* ancho fijo; el wrapper scrollea */
+    min-width: 620px;
+    overflow: visible; /* los botones no se recortan */
+  }
+
   .map-container__image {
-    min-width: 600px;
-    width: 600px;
+    width: 620px;
+    min-width: 620px;
   }
+
+  /* Botones ligeramente más pequeños pero legibles */
   .location-btn {
-    font-size: 0.6rem;
-    padding: 5px 8px;
+    font-size: 0.62rem;
+    padding: 5px 9px;
+    letter-spacing: 0.04em;
+  }
+
+  /* Popups: ocupan casi toda la pantalla en móvil */
+  .welcome-guide,
+  .info-popup {
+    width: 95%;
+    padding: 1.25rem;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .info-popup__image {
+    height: 140px;
   }
 }

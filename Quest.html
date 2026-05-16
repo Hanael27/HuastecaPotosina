@@ -42,17 +42,20 @@
   </div>
 
   <!-- CONTENEDOR DEL MAPA:
-       La imagen del mapa (.map-container__image) ocupa el fondo.
-       BEM: .map-container, .map-container__image -->
-  <div class="map-container" id="map-container">
+       .map-scroll-wrapper: hace scroll horizontal en móvil sin romper
+       el position:relative que necesitan los botones top/left.
+       BEM: .map-scroll-wrapper > .map-container, .map-container__image -->
+  <div class="map-scroll-wrapper">
+    <div class="map-container" id="map-container">
 
-    <img src="IMG/Tour/MapaHP.png"
-         alt="Mapa de la Huasteca Potosina"
-         class="map-container__image"
-         id="map">
-    <!-- Los .location-btn se generan aquí dinámicamente por QScript.js a partir de data.json -->
+      <img src="IMG/Tour/MapaHP.png"
+           alt="Mapa de la Huasteca Potosina"
+           class="map-container__image"
+           id="map">
+      <!-- Los .location-btn se generan aquí dinámicamente por QScript.js a partir de data.json -->
 
-  </div>
+    </div>
+  </div><!-- /.map-scroll-wrapper -->
 
   <!-- POPUP DE INFORMACIÓN DE LUGAR:
        Se muestra al hacer clic en un botón de ubicación del mapa.
