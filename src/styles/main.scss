@@ -1,0 +1,178 @@
+@use 'reset';
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'header';
+@use 'nav';
+@use 'sections';
+@use 'gallery';
+@use 'footer';
+
+// ESTILOS GLOBALES DE BODY Y FONDO
+body {
+  font-family: $font-body;
+  background-color: $color-crema;
+  color: $color-texto;
+  background-image: url('../assets/img/ImgHC.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-bottom: 60px;
+}
+
+// MENSAJE DE BIENVENIDA
+.welcome {
+  position: fixed;
+  inset: 0;
+  @include flex-center;
+  flex-direction: column;
+  background: rgba($color-verde-musgo, 0.92);
+  z-index: 9999;
+  padding: $spacing-xl;
+  animation: section-fade-in $transition-normal ease;
+
+  &__image {
+    width: 120px;
+    margin-bottom: $spacing-lg;
+    border-radius: 50%;
+    border: 3px solid $color-turquesa;
+  }
+
+  &__text {
+    font-family: $font-body;
+    font-size: $font-size-md;
+    color: $color-blanco;
+    text-align: center;
+    max-width: 480px;
+    margin-bottom: $spacing-xl;
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  &__btn {
+    @include btn-base;
+    background-color: $color-turquesa;
+    color: $color-verde-musgo;
+    font-weight: 700;
+
+    &:hover {
+      background-color: lighten($color-turquesa, 10%);
+    }
+  }
+}
+
+// PLACEHOLDER DE IMAGEN
+.img-placeholder {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(135deg, $color-crema, lighten($color-turquesa-claro, 20%));
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-sm;
+  color: $color-texto-suave;
+  font-size: $font-size-sm;
+  font-family: $font-body;
+  border: 2px dashed $color-turquesa-claro;
+  border-radius: $border-radius-md;
+
+  i {
+    font-size: $font-size-xl;
+    color: $color-turquesa-claro;
+  }
+}
+
+// AVE ANIMADA
+.ave {
+  position: fixed;
+  bottom: 30px;
+  z-index: 1000;
+  width: 80px;
+  pointer-events: none;
+  animation: volar 14s linear infinite;
+
+  &__imagen {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+}
+
+@keyframes volar {
+  0%   { right: -100px; }
+  100% { right: calc(100vw + 100px); }
+}
+
+// ============================================================
+// RESPONSIVE MÓVIL VERTICAL — max-width: 575px
+// ============================================================
+@media (max-width: 575px) {
+  .nav__list {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .nav__item {
+    width: 100%;
+  }
+  .nav__link {
+    text-align: center;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+    border-left: 4px solid transparent;
+
+    &.active {
+      border-left-color: $color-turquesa !important;
+      border-bottom-color: rgba(255, 255, 255, 0.10) !important;
+      background-color: rgba($color-turquesa, 0.12);
+    }
+  }
+
+  .header {
+    padding: 1.25rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .header__flag {
+    position: static;
+    transform: none;
+    width: 52px;
+    margin-bottom: 0.75rem;
+    order: -1;
+  }
+  .header__title {
+    font-size: 1.75rem;
+    order: 0;
+  }
+  .header__subtitle {
+    font-size: 0.9rem;
+    order: 1;
+  }
+
+  .section {
+    padding: 1.25rem;
+  }
+  .section__title {
+    font-size: 1.4rem;
+  }
+
+  #section-musica .section__body,
+  .section--musica .section__body {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .music-table {
+    min-width: 480px;
+  }
+  .music-table__head th,
+  .music-table__row td {
+    padding: 0.75rem 0.75rem;
+  }
+
+  .carousel__caption-title {
+    font-size: $font-size-base;
+  }
+  .carousel__caption-text {
+    display: none; // en pantallas muy pequeñas priorizamos la imagen
+  }
+}

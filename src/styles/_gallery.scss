@@ -1,0 +1,171 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// BLOQUE: GALERÍA — Carrusel de imágenes de destinos
+// Reemplaza al antiguo mapa interactivo (Quest). Las imágenes se
+// obtienen de la API pública de Pixabay (o de un set local de respaldo)
+// y rotan automáticamente cada pocos segundos.
+
+.gallery-intro {
+  margin-bottom: $spacing-lg;
+}
+
+.gallery-source-note {
+  font-size: $font-size-xs;
+  color: $color-texto-suave;
+  font-style: italic;
+  margin-top: $spacing-sm;
+}
+
+.carousel {
+  position: relative;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-lg;
+  background-color: $color-verde-musgo;
+  margin-top: $spacing-lg;
+
+  &__viewport {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
+
+  &__slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity $transition-slow;
+    pointer-events: none;
+
+    &--active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: $spacing-lg;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+    color: $color-blanco;
+  }
+
+  &__caption-title {
+    font-family: $font-display;
+    font-size: $font-size-lg;
+    letter-spacing: 0.04em;
+    margin-bottom: $spacing-xs;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  &__caption-text {
+    font-family: $font-body;
+    font-size: $font-size-sm;
+    max-width: 640px;
+    line-height: 1.6;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  &__controls {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 $spacing-md;
+    pointer-events: none;
+  }
+
+  &__arrow {
+    @include flex-center;
+    pointer-events: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    color: $color-blanco;
+    font-size: $font-size-lg;
+    transition: background $transition-fast, transform $transition-fast;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.65);
+      transform: scale(1.08);
+    }
+  }
+
+  &__bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-md;
+    padding: $spacing-md;
+    background-color: $color-verde-musgo;
+  }
+
+  &__dots {
+    display: flex;
+    gap: $spacing-sm;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba($color-blanco, 0.4);
+    transition: background $transition-fast, transform $transition-fast;
+
+    &--active {
+      background: $color-turquesa;
+      transform: scale(1.3);
+    }
+  }
+
+  &__play-toggle {
+    @include flex-center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba($color-blanco, 0.12);
+    color: $color-blanco;
+    font-size: $font-size-sm;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: rgba($color-blanco, 0.25);
+    }
+  }
+}
+
+.gallery-status {
+  @include flex-center;
+  flex-direction: column;
+  gap: $spacing-md;
+  padding: $spacing-xxl $spacing-md;
+  color: $color-texto-suave;
+  font-family: $font-body;
+
+  &__spinner {
+    width: 36px;
+    height: 36px;
+    border: 4px solid rgba($color-turquesa, 0.25);
+    border-top-color: $color-turquesa;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
