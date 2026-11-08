@@ -57,12 +57,12 @@
     align-items: center;
     gap: $spacing-xs;
     margin-top: $spacing-lg;
-    color: $color-verde-claro;
+    color: $color-verde-selva;
     font-size: $font-size-sm;
     transition: color $transition-fast;
 
     &:hover {
-      color: $color-verde-selva;
+      color: $color-verde-musgo;
       text-decoration: underline;
     }
   }
@@ -183,6 +183,10 @@
   }
 
   // Enlace a YouTube dentro de cada celda
+  &__artist {
+    color: $color-texto-suave;
+  }
+
   &__link {
     @include btn-base;
     background-color: $color-verde-selva;
@@ -191,7 +195,7 @@
     padding: $spacing-xs $spacing-md;
 
     &:hover {
-      background-color: $color-verde-claro;
+      background-color: $color-verde-musgo;
     }
 
     i { font-size: 1rem; }
@@ -213,14 +217,14 @@
   &--primary {
     background-color: $color-verde-selva;
     color: $color-blanco;
-    &:hover { background-color: $color-verde-claro; }
+    &:hover { background-color: $color-verde-musgo; }
   }
 
   // Variante de peligro / detener (ocre)
   &--danger {
-    background-color: $color-ocre;
+    background-color: $color-ocre-oscuro;
     color: $color-blanco;
-    &:hover { background-color: darken($color-ocre, 8%); }
+    &:hover { background-color: darken($color-ocre-oscuro, 8%); }
   }
 }
 

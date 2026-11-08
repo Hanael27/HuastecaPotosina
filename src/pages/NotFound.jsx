@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 
 export default function NotFound() {
   return (
-    <section className="section">
+    <section className="section" aria-labelledby="title-notfound">
       <div className="section__header">
-        <h2 className="section__title">Página no encontrada</h2>
+        <h2 className="section__title" id="title-notfound">Página no encontrada</h2>
         <i className="fa-solid fa-compass section__icon" aria-hidden="true" />
       </div>
       <div className="section__body">

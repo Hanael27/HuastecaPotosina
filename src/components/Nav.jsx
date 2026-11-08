@@ -26,6 +26,12 @@ export default function Nav() {
             <i className="fa-solid fa-images" aria-hidden="true" /> Galería
           </NavLink>
         </li>
+
+        <li className="nav__item">
+          <NavLink to="/contacto" className="nav__link">
+            <i className="fa-solid fa-envelope" aria-hidden="true" /> Contacto
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

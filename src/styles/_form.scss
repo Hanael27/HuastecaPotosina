@@ -1,0 +1,145 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ============================================================
+// FORMULARIO DE CONTACTO
+// ============================================================
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  max-width: 640px;
+  margin-top: $spacing-lg;
+
+  &__note,
+  &__hint {
+    font-size: $font-size-sm;
+    color: $color-texto-suave;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+  }
+
+  &__label {
+    font-weight: 600;
+    color: $color-texto;
+  }
+
+  &__control {
+    width: 100%;
+    padding: $spacing-sm $spacing-md;
+    font-family: inherit;
+    font-size: $font-size-base;
+    color: $color-texto;
+    background-color: $color-blanco;
+    border: 2px solid $color-borde-input;
+    border-radius: $border-radius-sm;
+
+    &[aria-invalid='true'] {
+      border-color: $color-error;
+    }
+  }
+
+  textarea.form__control {
+    resize: vertical;
+    min-height: 8rem;
+  }
+
+  &__fieldset {
+    border: 1px solid $color-borde-input;
+    border-radius: $border-radius-sm;
+    padding: $spacing-md;
+  }
+
+  &__checks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm $spacing-lg;
+    margin-top: $spacing-sm;
+  }
+
+  &__check {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-sm;
+
+    input {
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-top: 0.2rem;
+      accent-color: $color-verde-selva;
+    }
+  }
+
+  &__error {
+    color: $color-error;
+    font-size: $font-size-sm;
+    font-weight: 600;
+  }
+
+  &__summary {
+    padding: $spacing-md;
+    border: 2px solid $color-error;
+    border-radius: $border-radius-sm;
+    background-color: $color-blanco;
+
+    h3 {
+      color: $color-error;
+      font-size: $font-size-base;
+      margin-bottom: $spacing-sm;
+    }
+
+    ul {
+      list-style: disc;
+      padding-left: $spacing-lg;
+    }
+
+    a {
+      color: $color-error;
+      text-decoration: underline;
+    }
+  }
+
+  &__btn {
+    @include btn-base;
+    align-self: flex-start;
+    background-color: $color-verde-selva;
+    color: $color-blanco;
+    font-size: $font-size-base;
+
+    &:hover {
+      background-color: $color-verde-musgo;
+    }
+
+    &--secondary {
+      background-color: transparent;
+      color: $color-verde-selva;
+      border: 2px solid $color-verde-selva;
+
+      &:hover {
+        background-color: $color-verde-selva;
+        color: $color-blanco;
+      }
+    }
+  }
+
+  &__success {
+    max-width: 640px;
+    margin-top: $spacing-lg;
+    padding: $spacing-lg;
+    border-left: 4px solid $color-verde-selva;
+    background-color: rgba($color-crema, 0.6);
+
+    h3 {
+      color: $color-verde-selva;
+      margin-bottom: $spacing-sm;
+    }
+
+    .form__btn {
+      margin-top: $spacing-md;
+    }
+  }
+}

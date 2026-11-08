@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectShowWelcome, closeWelcome } from '../store/uiSlice';
 import { selectSitio } from '../store/contentSlice';
@@ -7,6 +8,19 @@ export default function WelcomeOverlay() {
   const dispatch = useDispatch();
   const showWelcome = useSelector(selectShowWelcome);
   const sitio = useSelector(selectSitio);
+  const buttonRef = useRef(null);
+
+  // Al abrir el diálogo el foco pasa al botón; con Escape se cierra.
+  useEffect(() => {
+    if (!showWelcome) return undefined;
+    buttonRef.current?.focus();
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') dispatch(closeWelcome());
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [showWelcome, dispatch]);
 
   if (!showWelcome) return null;
 
@@ -17,14 +31,23 @@ export default function WelcomeOverlay() {
       role="dialog"
       aria-modal="true"
       aria-labelledby="welcome-title"
+      aria-describedby="welcome-text"
     >
-      <img src={guiaImg} alt="Guía Xochitl" className="welcome__image" />
+      <img
+        src={guiaImg}
+        alt="Xochitl, una cotorra de corona roja que es la guía del sitio"
+        className="welcome__image"
+      />
 
-      <p className="welcome__text" id="welcome-title">
+      <h2 className="sr-only" id="welcome-title">
+        Bienvenida
+      </h2>
+      <p className="welcome__text" id="welcome-text">
         {sitio.bienvenida}
       </p>
 
       <button
+        ref={buttonRef}
         className="welcome__btn"
         type="button"
         onClick={() => dispatch(closeWelcome())}

@@ -8,6 +8,7 @@ const tiles = [
   { to: '/musica', label: 'Música', icon: 'fa-music' },
   { to: '/cultura', label: 'Cultura', icon: 'fa-masks-theater' },
   { to: '/galeria', label: 'Galería', icon: 'fa-images' },
+  { to: '/contacto', label: 'Contacto', icon: 'fa-envelope' },
 ];
 
 export default function Home() {

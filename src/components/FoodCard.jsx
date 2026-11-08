@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import comidaImages from '../assets/comidaImageMap';
+import markLanguages from '../utils/markLanguages';
 
 function resolveImage(filename) {
   const match = Object.entries(comidaImages).find(([path]) => path.endsWith(filename));
@@ -16,7 +17,7 @@ export default function FoodCard({ platillo }) {
         {!imageFailed ? (
           <img
             src={resolvedSrc}
-            alt={platillo.nombre}
+            alt={platillo.alt || platillo.nombre}
             className="food-card__image"
             onError={() => setImageFailed(true)}
           />
@@ -29,8 +30,8 @@ export default function FoodCard({ platillo }) {
       </div>
 
       <div className="food-card__body">
-        <h3 className="food-card__name">{platillo.nombre}</h3>
-        <p className="food-card__desc">{platillo.descripcion}</p>
+        <h3 className="food-card__name">{markLanguages(platillo.nombre)}</h3>
+        <p className="food-card__desc">{markLanguages(platillo.descripcion)}</p>
       </div>
     </article>
   );

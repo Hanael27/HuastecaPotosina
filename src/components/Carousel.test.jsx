@@ -35,7 +35,7 @@ test('advances to the next slide when clicking the next arrow', () => {
 test('jumps to a slide when clicking its dot', () => {
   renderWithProviders(<Carousel />, { preloadedState });
 
-  fireEvent.click(screen.getByRole('tab', { name: /ir a tamasopo/i }));
+  fireEvent.click(screen.getByRole('button', { name: /ir a tamasopo/i }));
 
   expect(screen.getByTestId('carousel-current-label')).toHaveTextContent('Tamasopo');
 });

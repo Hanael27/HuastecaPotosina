@@ -5,7 +5,7 @@ export default function MusicRow({ cancion, index }) {
       <td>
         <strong>{cancion.titulo}</strong>
         <br />
-        <small style={{ color: '#777' }}>{cancion.artista}</small>
+        <small className="music-table__artist">{cancion.artista}</small>
       </td>
       <td>
         <a
@@ -13,6 +13,7 @@ export default function MusicRow({ cancion, index }) {
           href={cancion.youtube}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={`Ver en YouTube: ${cancion.titulo}, ${cancion.artista} (se abre en una pestaña nueva)`}
         >
           <i className="fab fa-youtube" aria-hidden="true" /> Ver en YouTube
         </a>

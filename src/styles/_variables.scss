@@ -9,6 +9,14 @@ $color-crema:          #f5f0e8;   // Fondo crema cálido
 $color-texto:          #222222;   // Texto principal
 $color-texto-suave:    #555555;   // Texto secundario
 $color-blanco:         #ffffff;
+
+// Variantes pensadas para cumplir el contraste mínimo WCAG AA (4.5:1 en texto)
+$color-ocre-claro:     #eeb070;   // Ocre sobre fondo verde oscuro (5.4:1)
+$color-ocre-oscuro:    #9a5a14;   // Fondo ocre con texto blanco (5.5:1)
+$color-texto-boton:    #0f2e0f;   // Texto sobre turquesa (6.0:1)
+$color-error:          #b3261e;   // Mensajes de error sobre blanco (6.5:1)
+$color-borde-input:    #6b6b6b;   // Borde de campos de formulario (5.3:1)
+$color-foco:           #005f73;   // Anillo de foco de teclado
 $color-overlay:        rgba(0, 0, 0, 0.45); // Overlay oscuro para legibilidad
 
 // TIPOGRAFÍA

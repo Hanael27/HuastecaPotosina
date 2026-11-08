@@ -7,7 +7,7 @@ export default function Header() {
 
   return (
     <header className="header" id="top">
-      <img src={escudoSLP} alt="Escudo de San Luis Potosí" className="header__flag" />
+      <img src={escudoSLP} alt="Escudo del estado de San Luis Potosí" className="header__flag" />
       <h1 className="header__title">{sitio.titulo}</h1>
       <p className="header__subtitle">{sitio.subtitulo}</p>
     </header>

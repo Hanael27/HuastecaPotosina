@@ -12,49 +12,64 @@ function buildLocalFallback() {
       id: destino.id,
       nombre: destino.nombre,
       info: destino.info,
+      alt: destino.alt,
       imageUrl: match ? match[1] : null,
       source: 'local',
     };
   });
 }
 
+// Cuántas fotos pide a Pixabay por destino para poder elegir una que sí sea del lugar.
+const PIXABAY_CANDIDATES = 50;
+
+// Pixabay ordena por popularidad, no por lugar: una foto solo se acepta si sus
+// etiquetas (tags) mencionan alguna de las palabras clave del destino.
+function matchesDestination(image, destino) {
+  const tags = (image.tags || '').toLowerCase();
+  return destino.palabrasClave.some((palabra) => tags.includes(palabra.toLowerCase()));
+}
+
 /**
  * Thunk asíncrono: para cada destino de la Huasteca, pide a la API de
- * Pixabay (vía Axios) una imagen representativa. Si no hay API key
- * configurada, o si la petición falla, se usa el set de imágenes
- * locales como respaldo, para que la galería nunca quede vacía.
+ * Pixabay (vía Axios) fotos candidatas y elige la primera cuyas etiquetas
+ * correspondan al lugar. Si no hay API key, si la petición falla o si
+ * Pixabay no tiene una foto fiable de ese destino, esa diapositiva usa la
+ * imagen local, para que la galería nunca quede vacía ni muestre otro lugar.
  */
 export const fetchGalleryImages = createAsyncThunk(
   'gallery/fetchGalleryImages',
-  async (_, { rejectWithValue }) => {
+  async () => {
+    const localItems = buildLocalFallback();
+
     if (!hasPixabayKey()) {
-      return { items: buildLocalFallback(), source: 'local' };
+      return { items: localItems, source: 'local' };
     }
 
     try {
-      const results = await Promise.all(
-        siteData.destinos.map(async (destino) => {
-          const images = await searchImages(destino.busqueda, 3);
-          const best = images[0];
+      const items = await Promise.all(
+        siteData.destinos.map(async (destino, index) => {
+          const images = await searchImages(destino.busqueda, PIXABAY_CANDIDATES);
+          const best = images.find((image) => matchesDestination(image, destino));
+          if (!best) return localItems[index];
+
           return {
             id: destino.id,
             nombre: destino.nombre,
             info: destino.info,
-            imageUrl: best ? best.imageUrl : null,
-            attribution: best ? best.user : null,
+            alt: `Fotografía de ${destino.nombre}`,
+            imageUrl: best.imageUrl,
+            attribution: best.user,
             source: 'pixabay',
           };
         })
       );
 
-      // Si Pixabay no regresó ninguna imagen usable, cae al respaldo local
-      const usable = results.filter((r) => r.imageUrl);
-      if (usable.length === 0) {
-        return { items: buildLocalFallback(), source: 'local' };
-      }
-      return { items: results, source: 'pixabay' };
-    } catch (err) {
-      return rejectWithValue(err.message || 'Error al conectar con Pixabay');
+      const usesPixabay = items.some((item) => item.source === 'pixabay');
+      return { items, source: usesPixabay ? 'pixabay' : 'local' };
+    } catch {
+      // Sin internet, key inválida o límite de peticiones: la galería no se
+      // queda vacía, se muestran las imágenes locales (igual que sin key).
+      return { items: localItems, source: 'local' };
     }
   }
 );

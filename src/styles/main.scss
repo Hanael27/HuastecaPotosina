@@ -6,6 +6,8 @@
 @use 'sections';
 @use 'gallery';
 @use 'footer';
+@use 'form';
+@use 'a11y';
 
 // ESTILOS GLOBALES DE BODY Y FONDO
 body {
@@ -52,7 +54,7 @@ body {
   &__btn {
     @include btn-base;
     background-color: $color-turquesa;
-    color: $color-verde-musgo;
+    color: $color-texto-boton;
     font-weight: 700;
 
     &:hover {

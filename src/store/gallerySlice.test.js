@@ -98,7 +98,7 @@ describe('fetchGalleryImages thunk', () => {
   test('uses Pixabay results when an API key is present', async () => {
     hasPixabayKey.mockReturnValue(true);
     searchImages.mockResolvedValue([
-      { id: 1, imageUrl: 'https://pixabay.example/image.jpg', user: 'someone' },
+      { id: 1, tags: 'xilitla, las pozas, jungle', imageUrl: 'https://pixabay.example/image.jpg', user: 'someone' },
     ]);
 
     const store = makeStore();
@@ -108,6 +108,23 @@ describe('fetchGalleryImages thunk', () => {
     expect(state.status).toBe('succeeded');
     expect(state.source).toBe('pixabay');
     expect(state.items[0].imageUrl).toBe('https://pixabay.example/image.jpg');
+    // Los destinos cuyas etiquetas no coinciden conservan su imagen local
+    expect(state.items[1].source).toBe('local');
+  });
+
+  test('rejects Pixabay photos whose tags do not mention the destination', async () => {
+    hasPixabayKey.mockReturnValue(true);
+    searchImages.mockResolvedValue([
+      { id: 9, tags: 'windmill, white, field', imageUrl: 'https://pixabay.example/molino.jpg', user: 'x' },
+    ]);
+
+    const store = makeStore();
+    await store.dispatch(fetchGalleryImages());
+
+    const state = store.getState().gallery;
+    expect(state.source).toBe('local');
+    expect(state.items.every((item) => item.source === 'local')).toBe(true);
+    expect(state.items.some((item) => item.imageUrl === 'https://pixabay.example/molino.jpg')).toBe(false);
   });
 
   test('falls back to local images if Pixabay throws', async () => {
@@ -118,8 +135,8 @@ describe('fetchGalleryImages thunk', () => {
     await store.dispatch(fetchGalleryImages());
 
     const state = store.getState().gallery;
-    // Our thunk only rejects on a hard error; Promise.all rejects together,
-    // so the slice should land in "failed" in that case.
-    expect(['failed', 'succeeded']).toContain(state.status);
+    expect(state.status).toBe('succeeded');
+    expect(state.source).toBe('local');
+    expect(state.items.length).toBeGreaterThan(0);
   });
 });

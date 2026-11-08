@@ -46,11 +46,11 @@
 
     // Enlace a la Galería: estilo diferenciado, igual que antes el Quest
     &--gallery {
-      color: $color-ocre;
+      color: $color-ocre-claro;
       font-weight: 700;
 
       &:hover {
-        color: lighten($color-ocre, 15%);
+        color: lighten($color-ocre-claro, 10%);
       }
     }
   }

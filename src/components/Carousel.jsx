@@ -20,16 +20,31 @@ export default function Carousel({ intervalMs = 4000 }) {
   const current = items[currentIndex];
 
   return (
-    <div className="carousel">
-      <div className="carousel__viewport">
+    // role="region" + aria-label: el carrusel se anuncia como una región con nombre.
+    <div
+      className="carousel"
+      role="region"
+      aria-roledescription="carrusel"
+      aria-label="Galería de destinos de la Huasteca Potosina"
+    >
+      {/* Mientras avanza solo no se anuncia cada cambio; en pausa sí. */}
+      <div className="carousel__viewport" aria-live={isPlaying ? 'off' : 'polite'}>
         {items.map((item, index) => (
           <div
             key={item.id}
+            role="group"
+            aria-roledescription="diapositiva"
+            aria-label={`${index + 1} de ${items.length}`}
+            aria-hidden={index !== currentIndex}
             className={`carousel__slide ${
               index === currentIndex ? 'carousel__slide--active' : ''
             }`}
           >
-            <img src={item.imageUrl} alt={item.nombre} className="carousel__image" />
+            <img
+              src={item.imageUrl}
+              alt={item.alt || item.nombre}
+              className="carousel__image"
+            />
             <div className="carousel__caption">
               <h3 className="carousel__caption-title">{item.nombre}</h3>
               <p className="carousel__caption-text">{item.info}</p>
@@ -67,13 +82,13 @@ export default function Carousel({ intervalMs = 4000 }) {
           <i className={`fa-solid ${isPlaying ? 'fa-pause' : 'fa-play'}`} aria-hidden="true" />
         </button>
 
-        <div className="carousel__dots" role="tablist" aria-label="Seleccionar destino">
+        {/* Son botones normales (no tabs): no hay tabpanels asociados. */}
+        <div className="carousel__dots" role="group" aria-label="Seleccionar destino">
           {items.map((item, index) => (
             <button
               key={item.id}
               type="button"
-              role="tab"
-              aria-selected={index === currentIndex}
+              aria-current={index === currentIndex ? 'true' : undefined}
               aria-label={`Ir a ${item.nombre}`}
               className={`carousel__dot ${
                 index === currentIndex ? 'carousel__dot--active' : ''

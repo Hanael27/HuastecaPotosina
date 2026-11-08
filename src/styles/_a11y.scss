@@ -1,0 +1,65 @@
+@use 'variables' as *;
+
+// ============================================================
+// UTILIDADES DE ACCESIBILIDAD
+// ============================================================
+
+// Texto solo para lectores de pantalla
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Enlace "Saltar al contenido": solo aparece al enfocarlo con el teclado
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: $spacing-md;
+  z-index: 3000;
+  padding: $spacing-sm $spacing-md;
+  background-color: $color-blanco;
+  color: $color-verde-musgo;
+  font-weight: 700;
+  border-radius: $border-radius-sm;
+  box-shadow: $shadow-md;
+
+  &:focus {
+    top: $spacing-md;
+  }
+}
+
+// Foco de teclado visible en cualquier fondo: anillo oscuro + halo blanco
+:focus-visible {
+  outline: 3px solid $color-foco;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px $color-blanco;
+}
+
+// El <main> recibe foco solo por programa (tabindex=-1): sin anillo
+main:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+// Respeta la preferencia del sistema "reducir movimiento"
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ave {
+    display: none;
+  }
+}
